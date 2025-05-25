@@ -51,6 +51,7 @@ void crearProcesoSimulado(string nombre, int tiempo) {
 
     listaProcesos.push_back(nuevo);
     cout << "Proceso \"" << nombre << "\" creado con PID " << nuevo.pid << " y tiempo de ejecución " << tiempo << ".\n";
+    registrarLog("Se creo el proceso '" + nuevo.nombre + "' con PID '" + to_string(nuevo.pid) + "'");
 }
 
 void mostrarProcesos() {

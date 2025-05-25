@@ -1,0 +1,2 @@
+[25/05/2025 14:14:08] Usuario 'a' inició sesión.
+[25/05/2025 14:14:33] Se creo el proceso 'asdasda' con PID 'asdasda'

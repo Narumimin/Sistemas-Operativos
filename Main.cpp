@@ -42,6 +42,7 @@ int main() {
                 {
                     usuarioEncontrado = true;
                     usuarioActual = usuarios[i];
+                    registrarLog("Usuario '" + usuarioActual.nombre + "' inició sesión.");
                 }
             }
             break;

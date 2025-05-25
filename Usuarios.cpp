@@ -20,6 +20,7 @@ Usuario CrearUsuarioRoot()
     getline(cin, clave);
 
     Usuario UsuarioRoot(nombre, clave, true);
+    registrarLog("Se creo el usuario root '" + nombre + "'");
 
     return UsuarioRoot;
 }
@@ -35,6 +36,7 @@ Usuario CrearUsuario()
     getline(cin, clave);
 
     Usuario UsuarioNormal(nombre, clave, false);
+    registrarLog("Se creo el usuario '" + nombre + "'");
 
     return UsuarioNormal;
 }

@@ -9,6 +9,7 @@
 #include <csignal>
 #include <cstdlib>
 #include <ctime>
+#include <fstream>
 using namespace std;
 
 // Funciones en Menu
@@ -67,5 +68,9 @@ void escribirArchivo(const Usuario& usuario);
 void listarArchivos();
 void editarPermisos(const Usuario& usuario);
 string obtenerFechaActual();
+
+//Funcion para logs
+void registrarLog(const string& mensaje);
+
 
 #endif
