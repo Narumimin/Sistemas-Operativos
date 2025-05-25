@@ -33,9 +33,11 @@ Usuario CrearUsuario();
 // void suspenderProceso(pid_t pid);
 // void reanudarProceso(pid_t pid);
 
+enum EstadoProceso { NUEVO, PAUSADO, EJECUTANDO, TERMINADO};
 struct Proceso {
     int pid;                  // ID del proceso (simulado o real)
     string nombre;            // Nombre o descripción del proceso
+    EstadoProceso estado;     // Estado del proceso
     int tiempoEjecucion;      // Tiempo que requiere (para Round Robin)
     int tiempoRestante;       // Tiempo restante (solo útil en Round Robin)
 };

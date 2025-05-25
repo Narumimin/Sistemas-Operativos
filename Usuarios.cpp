@@ -12,7 +12,7 @@ Usuario::Usuario() : nombre(""), clave(""), esRoot(false) {}
 Usuario CrearUsuarioRoot() 
 {
     string nombre, clave;
-    cout << "----\tCreando Usuario Root\t----\n";
+    cout << "---- Creando Usuario Root ----\n";
 
     cout << "Ingese el nombre: ";
     getline(cin, nombre);
@@ -27,7 +27,7 @@ Usuario CrearUsuarioRoot()
 Usuario CrearUsuario() 
 {
     string nombre, clave;
-    cout << "----\tCreando Usuario\t----";
+    cout << "\n---- Creando Usuario ----\n";
 
     cout << "Ingese el nombre: ";
     getline(cin, nombre);

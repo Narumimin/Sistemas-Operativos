@@ -10,8 +10,7 @@ int main() {
     vector <Usuario> usuarios;
     Usuario usuarioRoot = CrearUsuarioRoot();
     usuarios.push_back(usuarioRoot);
-    char login;
-    char opcion;
+    char login, opcion, tipoProceso;
     bool usuarioEncontrado = false;
     Usuario usuarioActual;
     string entrada_nombre, entrada_clave;
@@ -19,17 +18,17 @@ int main() {
     int tiempoProceso;
 
     do {
-        cout << "\n----\tPANTALLA DE INICIO\t----\n";
+        cout << "\n---- PANTALLA DE INICIO ----\n";
         cout << "1. Iniciar Sesion\n";
         cout << "2. Crear nuevo usuario\n";
-        cout << "0. Salir\n->";
+        cout << "0. Salir\n-> ";
         cin >> login;
         cin.ignore();
 
         switch (login)
         {
         case '1':
-            cout << "\n----\tLOG IN\t----\n";
+            cout << "\n---- LOG IN ----\n";
             cout << "Ingrese el nombre de usuario: ";
             getline(cin, entrada_nombre);
             cout << "Ingrese la contraseña: ";
@@ -84,15 +83,18 @@ int main() {
                     break;
 
                 case '4':
-                    ejecutarFIFO();
-                    break;
+                    cout << "Elegir algoritmo (f: FIFO, r: Round Robin): ";
+                    cin >> tipoProceso;
 
-                case '5':
-                    //escribirArchivo(usuario_actual);
-                    break;
-
-                case '6':
-                    //listarArchivos();
+                    if (tipoProceso == 'f') {
+                        ejecutarFIFO();
+                    } 
+                    else if (tipoProceso == 'r') {
+                        int quantum;
+                        cout << "Ingresa quantum: ";
+                        cin >> quantum;
+                        ejecutarRoundRobin(quantum);
+                    }
                     break;
 
                 case '0':
@@ -106,7 +108,7 @@ int main() {
 
             } while (opcion != '0');
         }
-        else if (!usuarioEncontrado && login != '0')
+        else if (!usuarioEncontrado && login == '1')
         {
             cout << "!!! ERROR: Nombre de usuario o contraseña invalida !!!\n";
         }

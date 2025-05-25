@@ -45,6 +45,7 @@ void crearProcesoSimulado(string nombre, int tiempo) {
     Proceso nuevo;
     nuevo.pid = contadorPID++;
     nuevo.nombre = nombre;
+    nuevo.estado = NUEVO;
     nuevo.tiempoEjecucion = tiempo;
     nuevo.tiempoRestante = tiempo;
 
@@ -57,19 +58,57 @@ void mostrarProcesos() {
     for (int i = 0; i < listaProcesos.size(); i++) {
         cout << "PID: " << listaProcesos[i].pid
              << " | Nombre: " << listaProcesos[i].nombre
+             << " | Estado: " << listaProcesos[i].estado
              << " | Tiempo restante: " << listaProcesos[i].tiempoRestante << endl;
     }
 }
 
 void ejecutarFIFO() {
-    cout << "\n=== Ejecución FIFO ===\n";
+    cout << "\n--- Ejecución FIFO ---\n";
     for (int i = 0; i < listaProcesos.size(); i++) {
-        cout << "Ejecutando proceso " << listaProcesos[i].nombre << " (PID " << listaProcesos[i].pid << ")..." << endl;
+        cout << "\nEjecutando proceso " << listaProcesos[i].nombre << " (PID " << listaProcesos[i].pid << ")..." << endl;
         for(int j = 0; j < listaProcesos[i].tiempoEjecucion; j++) {
-            sleep(1);  // Simula ejecución
+            sleep(1);
             cout << j+1 << "s\n";
         }
+        listaProcesos[i].estado = TERMINADO;
         listaProcesos[i].tiempoRestante = 0;
         cout << "Proceso " << listaProcesos[i].pid << " terminado.\n";
+    }
+}
+
+void ejecutarRoundRobin(int quantum) {
+    cout << "\n--- Ejecución Round Robin (Quantum = " << quantum << ") ---\n";
+    int cantidadCiclos = 0;
+    bool procesosPendientes = true;
+    while (procesosPendientes) {
+        procesosPendientes = false;
+
+        for (int i = 0; i < listaProcesos.size(); i++) {
+            if (listaProcesos[i].estado == TERMINADO) continue;
+
+            procesosPendientes = true;
+            listaProcesos[i].estado = EJECUTANDO;
+
+            int ejecucion = min(quantum, listaProcesos[i].tiempoRestante);
+            cout << "\nProceso " << listaProcesos[i].nombre << " (PID " << listaProcesos[i].pid << ") ejecutando " << ejecucion << " segundos..." << endl;
+            for(int j = 0; j < ejecucion; j++) {
+                sleep(1);
+                cout << j+1 << "s\n";
+            }
+            listaProcesos[i].tiempoRestante -= ejecucion;
+
+            if (listaProcesos[i].tiempoRestante <= 0) {
+                listaProcesos[i].estado = TERMINADO;
+                cout << "Proceso " << listaProcesos[i].pid << " terminado.\n";
+            } else {
+                listaProcesos[i].estado = PAUSADO;
+                cout << "Proceso " << listaProcesos[i].pid << " pausado. Tiempo restante: " << listaProcesos[i].tiempoRestante << endl;
+            }
+        }
+        if(procesosPendientes){
+            cantidadCiclos++;
+            cout << "\nCiclo " << cantidadCiclos << " terminado\n- - - - - - -\n\n";
+        }
     }
 }
