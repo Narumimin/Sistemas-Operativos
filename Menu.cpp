@@ -7,8 +7,8 @@ void mostrarMenu() {
     cout << "3. Mostrar procesos simulados\n";
     cout << "4. Ejecutar planificación\n";
     cout << "5. Crear archivo\n";
-    cout << "6. Leer archivo\n";
-    cout << "7. Escribir archivo\n";
+    cout << "6. Escribir archivo\n";
+    cout << "7. Leer archivo\n";
     cout << "8. Listar archivos\n";
     cout << "0. Cerrar Sesion\n-> ";
 }

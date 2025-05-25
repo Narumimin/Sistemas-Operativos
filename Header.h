@@ -24,6 +24,7 @@ public:
     bool esRoot;
 };
 
+extern vector <Usuario> usuarios;
 Usuario CrearUsuarioRoot();
 Usuario CrearUsuario();
 
@@ -47,5 +48,21 @@ void crearProcesoSimulado(string nombre, int tiempo);
 void mostrarProcesos();
 void ejecutarFIFO();
 void ejecutarRoundRobin(int quantum);
+
+// Funciones para Archivos
+
+struct Archivo {
+    string nombre;
+    string contenido;
+    string propietario;
+    bool permisoLectura;
+    bool permisoEscritura;
+};
+extern vector<Archivo> archivos;
+
+void crearArchivo(const Usuario& usuario);
+void leerArchivo(const Usuario& usuario);
+void escribirArchivo(const Usuario& usuario);
+void listarArchivos();
 
 #endif

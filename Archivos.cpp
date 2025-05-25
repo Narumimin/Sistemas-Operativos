@@ -1,0 +1,64 @@
+#include "Header.h"
+vector<Archivo> archivos;
+
+void crearArchivo(const Usuario& usuario) {
+    Archivo nuevo;
+    cout << "Nombre del archivo: ";
+    getline(cin, nuevo.nombre);
+    nuevo.propietario = usuario.nombre;
+    nuevo.permisoLectura = true;
+    nuevo.permisoEscritura = true;
+    nuevo.contenido = "";
+
+    archivos.push_back(nuevo);
+    cout << "Archivo creado exitosamente.\n";
+}
+
+void escribirArchivo(const Usuario& usuario) {
+    string nombre;
+    cout << "Nombre del archivo a escribir: ";
+    getline(cin, nombre);
+
+    for (int i = 0; i < archivos.size(); i++) {
+        if (archivos[i].nombre == nombre) {
+            if (archivos[i].permisoEscritura || archivos[i].propietario == usuario.nombre || usuario.esRoot) {
+                cout << "Nuevo contenido: ";
+                string nuevoContenido;
+                getline(cin, nuevoContenido);
+                archivos[i].contenido = nuevoContenido;
+                cout << "Escritura exitosa.\n";
+                return;
+            } else {
+                cout << "Permiso denegado.\n";
+                return;
+            }
+        }
+    }
+    cout << "Archivo no encontrado.\n";
+}
+
+void leerArchivo(const Usuario& usuario) {
+    string nombre;
+    cout << "Nombre del archivo a leer: ";
+    getline(cin, nombre);
+
+    for (int i = 0; i < archivos.size(); i++) {
+        if (archivos[i].nombre == nombre) {
+            if (archivos[i].permisoLectura || archivos[i].propietario == usuario.nombre || usuario.esRoot) {
+                cout << "Contenido: " << archivos[i].contenido << endl;
+                return;
+            } else {
+                cout << "Permiso denegado.\n";
+                return;
+            }
+        }
+    }
+    cout << "Archivo no encontrado.\n";
+}
+
+void listarArchivos() {
+    cout << "\nArchivos disponibles:\n";
+    for (int i = 0; i < archivos.size(); i++) {
+        cout << "- " << archivos[i].nombre << " (Propietario: " << archivos[i].propietario << ")\n";
+    }
+}

@@ -2,12 +2,14 @@
 #include "Usuarios.cpp"
 #include "Menu.cpp"
 #include "Procesos.cpp"
+#include "Archivos.cpp"
+
+vector <Usuario> usuarios;
 
 int main() {
 
     setlocale(LC_ALL, "");
-
-    vector <Usuario> usuarios;
+    
     Usuario usuarioRoot = CrearUsuarioRoot();
     usuarios.push_back(usuarioRoot);
     char login, opcion, tipoProceso;
@@ -95,6 +97,22 @@ int main() {
                         cin >> quantum;
                         ejecutarRoundRobin(quantum);
                     }
+                    break;
+
+                case '5':
+                    crearArchivo(usuarioActual);
+                    break;
+
+                case '6':
+                    escribirArchivo(usuarioActual);
+                    break;
+
+                case '7':
+                    leerArchivo(usuarioActual);
+                    break;
+
+                case '8':
+                    listarArchivos();
                     break;
 
                 case '0':
