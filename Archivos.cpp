@@ -9,6 +9,7 @@ void crearArchivo(const Usuario& usuario) {
     nuevo.permisoLectura = true;
     nuevo.permisoEscritura = true;
     nuevo.contenido = "";
+    nuevo.fechaCreacion = obtenerFechaActual();
 
     archivos.push_back(nuevo);
     cout << "Archivo creado exitosamente.\n";
@@ -63,6 +64,7 @@ void listarArchivos() {
         << " (Propietario: " << archivos[i].propietario    
         << " | Lectura: " << (archivos[i].permisoLectura ? "Sí" : "No")
         << " | Escritura: " << (archivos[i].permisoEscritura ? "Sí" : "No")
+        << " | Creado: " << archivos[i].fechaCreacion
         << ")" << endl;
     }
 }
@@ -108,4 +110,14 @@ void editarPermisos(const Usuario &usuario)
         }
     }
     cout << "Archivo no encontrado.\n";
+}
+
+
+string obtenerFechaActual() {
+    time_t ahora = time(0);
+    tm* tiempoLocal = localtime(&ahora);
+
+    char buffer[80];
+    strftime(buffer, sizeof(buffer), "%d/%m/%Y %H:%M:%S", tiempoLocal);
+    return string(buffer);
 }

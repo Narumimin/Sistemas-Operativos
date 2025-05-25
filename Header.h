@@ -57,6 +57,7 @@ struct Archivo {
     string propietario;
     bool permisoLectura;
     bool permisoEscritura;
+    string fechaCreacion;
 };
 extern vector<Archivo> archivos;
 
@@ -65,5 +66,6 @@ void leerArchivo(const Usuario& usuario);
 void escribirArchivo(const Usuario& usuario);
 void listarArchivos();
 void editarPermisos(const Usuario& usuario);
+string obtenerFechaActual();
 
 #endif
