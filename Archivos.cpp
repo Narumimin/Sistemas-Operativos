@@ -59,6 +59,53 @@ void leerArchivo(const Usuario& usuario) {
 void listarArchivos() {
     cout << "\nArchivos disponibles:\n";
     for (int i = 0; i < archivos.size(); i++) {
-        cout << "- " << archivos[i].nombre << " (Propietario: " << archivos[i].propietario << ")\n";
+        cout << "- " << archivos[i].nombre 
+        << " (Propietario: " << archivos[i].propietario    
+        << " | Lectura: " << (archivos[i].permisoLectura ? "Sí" : "No")
+        << " | Escritura: " << (archivos[i].permisoEscritura ? "Sí" : "No")
+        << ")" << endl;
     }
+}
+
+void editarPermisos(const Usuario &usuario)
+{
+    listarArchivos();
+
+    string nombre;
+    cout << "Nombre del archivo a editar: ";
+    getline(cin, nombre);
+
+    for (int i = 0; i < archivos.size(); i++) {
+        if (archivos[i].nombre == nombre) {
+            if(archivos[i].propietario == usuario.nombre || usuario.esRoot){
+                char nuevaLectura, nuevaEscritura;
+                cout << "¿Permitir lectura? (s/n): ";
+                cin >> nuevaLectura;
+                cout << "¿Permitir escritura? (s/n): ";
+                cin >> nuevaEscritura;
+                cin.ignore();
+
+                if(nuevaEscritura == 's' || nuevaEscritura == 'S'){
+                    archivos[i].permisoEscritura = true;
+                }
+                else{
+                    archivos[i].permisoEscritura = false;
+                }   
+
+                if(nuevaLectura == 's' || nuevaLectura == 'S'){
+                    archivos[i].permisoLectura = true;
+                }
+                else{
+                    archivos[i].permisoLectura = false;
+                }
+                cout << "Permisos actualizados correctamente.\n";
+                return;
+            }
+            else{
+                cout << "No tienes permiso para modificar este archivo.\n";
+                return;
+            }
+        }
+    }
+    cout << "Archivo no encontrado.\n";
 }

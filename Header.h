@@ -64,5 +64,6 @@ void crearArchivo(const Usuario& usuario);
 void leerArchivo(const Usuario& usuario);
 void escribirArchivo(const Usuario& usuario);
 void listarArchivos();
+void editarPermisos(const Usuario& usuario);
 
 #endif

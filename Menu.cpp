@@ -9,6 +9,7 @@ void mostrarMenu() {
     cout << "5. Crear archivo\n";
     cout << "6. Escribir archivo\n";
     cout << "7. Leer archivo\n";
-    cout << "8. Listar archivos\n";
+    cout << "8. Editar permisos de archivos\n";
+    cout << "9. Listar Archivos\n";
     cout << "0. Cerrar Sesion\n-> ";
 }

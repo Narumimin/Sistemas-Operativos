@@ -112,6 +112,10 @@ int main() {
                     break;
 
                 case '8':
+                    editarPermisos(usuarioActual);
+                    break;
+
+                case '9':
                     listarArchivos();
                     break;
 
