@@ -67,11 +67,11 @@ int main() {
 
                 switch (opcion) {
                 case '1':
-                    crearProceso();
+                    //crearProceso();
                     break;
 
                 case '2':
-                    cout << "Ingrese el nombre del proceso: ";
+                    cout << "\nIngrese el nombre del proceso: ";
                     getline(cin, nombreProceso);
                     cout << "Ingrese el tiempo de duracion del proceso en segundos: ";
                     cin >> tiempoProceso;
@@ -84,7 +84,7 @@ int main() {
                     break;
 
                 case '4':
-                    //leerArchivo(usuario_actual);
+                    ejecutarFIFO();
                     break;
 
                 case '5':
@@ -99,7 +99,7 @@ int main() {
                     usuarioEncontrado = false;
                     cout << "\nCerrando Sesion...\n";
                     break;
-                    
+
                 default:
                     cout << "\nOpción inválida\n";
                 }

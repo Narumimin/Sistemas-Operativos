@@ -10,5 +10,5 @@ void mostrarMenu() {
     cout << "6. Leer archivo\n";
     cout << "7. Escribir archivo\n";
     cout << "8. Listar archivos\n";
-    cout << "0. Cerrar Sesion\n->";
+    cout << "0. Cerrar Sesion\n-> ";
 }
