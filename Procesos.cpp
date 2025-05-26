@@ -1,43 +1,43 @@
 #include "Header.h"
 vector<Proceso> listaProcesos;
 
-// void crearProceso() {
-//     pid_t pid = fork();
+void crearProceso() {
+    pid_t pid = fork();
 
-//     if (pid < 0) {
-//         cout << "Error al crear el proceso.\n";
-//         return;
-//     }
+    if (pid < 0) {
+        cout << "Error al crear el proceso.\n";
+        return;
+    }
 
-//     if (pid == 0) {
-//         // Este es el proceso hijo
-//         cout << "Proceso hijo creado. PID: " << getpid() << endl;
-//         execl("/bin/ls", "ls", "-l", NULL);  // reemplaza el proceso con 'ls -l'
-//         cout << "Si ves esto, exec falló.\n";
-//         exit(1);
-//     } else {
-//         // Este es el proceso padre
-//         cout << "Proceso padre. Esperando al hijo (PID: " << pid << ")...\n";
-//         wait(NULL);
-//         cout << "Proceso hijo finalizado.\n";
-//     }
-// }
+    if (pid == 0) {
+        // Este es el proceso hijo
+        cout << "Proceso hijo creado. PID: " << getpid() << endl;
+        execl("/bin/ls", "ls", "-l", NULL);  // reemplaza el proceso con 'ls -l'
+        cout << "Si ves esto, exec falló.\n";
+        exit(1);
+    } else {
+        // Este es el proceso padre
+        cout << "Proceso padre. Esperando al hijo (PID: " << pid << ")...\n";
+        wait(NULL);
+        cout << "Proceso hijo finalizado.\n";
+    }
+}
 
-// void suspenderProceso(pid_t pid) {
-//     if (kill(pid, SIGSTOP) == 0) {
-//         cout << "Proceso " << pid << " suspendido.\n";
-//     } else {
-//         cout << "No se pudo suspender el proceso.\n";
-//     }
-// }
+void suspenderProceso(pid_t pid) {
+    if (kill(pid, SIGSTOP) == 0) {
+        cout << "Proceso " << pid << " suspendido.\n";
+    } else {
+        cout << "No se pudo suspender el proceso.\n";
+    }
+}
 
-// void reanudarProceso(pid_t pid) {
-//     if (kill(pid, SIGCONT) == 0) {
-//         cout << "Proceso " << pid << " reanudado.\n";
-//     } else {
-//         cout << "No se pudo reanudar el proceso.\n";
-//     }
-// }
+void reanudarProceso(pid_t pid) {
+    if (kill(pid, SIGCONT) == 0) {
+        cout << "Proceso " << pid << " reanudado.\n";
+    } else {
+        cout << "No se pudo reanudar el proceso.\n";
+    }
+}
 
 void crearProcesoSimulado(string nombre, int tiempo) {
     static int contadorPID = 1000;

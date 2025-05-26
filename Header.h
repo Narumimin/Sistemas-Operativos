@@ -31,9 +31,9 @@ Usuario CrearUsuario();
 
 // Funciones para procesos
 
-// void crearProceso();
-// void suspenderProceso(pid_t pid);
-// void reanudarProceso(pid_t pid);
+void crearProceso();
+void suspenderProceso(pid_t pid);
+void reanudarProceso(pid_t pid);
 
 enum EstadoProceso { NUEVO, PAUSADO, EJECUTANDO, TERMINADO};
 struct Proceso {

@@ -1,2 +1,6 @@
 [25/05/2025 14:14:08] Usuario 'a' inició sesión.
 [25/05/2025 14:14:33] Se creo el proceso 'asdasda' con PID 'asdasda'
+[25/05/2025 19:50:00] Se creo el usuario root '1'
+[25/05/2025 19:50:02] Usuario '1' inició sesión.
+[25/05/2025 20:18:04] Se creo el usuario root 'a'
+[25/05/2025 20:18:11] Usuario 'a' inició sesión.
