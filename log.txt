@@ -4,3 +4,5 @@
 [25/05/2025 19:50:02] Usuario '1' inició sesión.
 [25/05/2025 20:18:04] Se creo el usuario root 'a'
 [25/05/2025 20:18:11] Usuario 'a' inició sesión.
+[25/05/2025 20:27:43] Se creo el usuario root '1'
+[25/05/2025 20:28:17] Se creo el usuario root 'hola'

@@ -69,7 +69,7 @@ int main() {
 
                 switch (opcion) {
                 case '1':
-                    //crearProceso();
+                    crearProceso();
                     break;
 
                 case '2':
